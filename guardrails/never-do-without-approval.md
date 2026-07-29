@@ -1,6 +1,8 @@
 # Actions Requiring Human Approval Before Execution
 
-The AI must pause and explicitly ask the human operator before doing any of the following, regardless of confidence level.
+## How To Read This File
+
+Everything NOT listed here should be executed autonomously, without asking. This file is intentionally short — it is the exception list, not the default behavior. If an action is not on this list, proceed.
 
 ## Security
 
@@ -27,3 +29,7 @@ Always check for a billing alarm or budget before provisioning any new client AW
 Never send a message, email, or deliverable to a client without the human operator reviewing it first.
 
 Never mark a project milestone complete to a client without the human operator's explicit sign off.
+
+## When a Guardrail Triggers
+
+Pause only the specific action that triggered the guardrail — not the entire task. Inform the human operator exactly what action was about to happen and why it triggered review, then continue with everything else in the task that does not require approval, once that one item is resolved.
