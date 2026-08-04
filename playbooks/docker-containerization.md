@@ -30,10 +30,22 @@ Docker installed. The application's actual dependencies and runtime requirements
 
 8. Push to a container registry scoped with least-privilege credentials, matching the same IAM discipline used for AWS access elsewhere in this framework.
 
+## A Real, Recurring Debugging Pattern: PATH Issues Inside Containers
+
+A command that installs successfully via apt but then fails with "executable file not found in $PATH" when run as a Dockerfile CMD or ENTRYPOINT is a genuinely common, easy-to-hit issue — not a sign anything is fundamentally wrong. Some packages install their binaries into locations not included in the container's default PATH, most commonly /usr/games for certain utility packages.
+
+When this happens: run the image interactively (docker run --rm -it IMAGE bash), confirm the binary is missing from PATH with which BINARY_NAME, then locate its actual installed location with find / -name BINARY_NAME 2>/dev/null. Fix by referencing the full absolute path directly in the Dockerfile's CMD or ENTRYPOINT instruction, rather than relying on it being discoverable via PATH.
+
+This same root cause (a package installing outside the expected PATH) can appear identically on a bare Linux server with no Docker involved at all — recognizing the pattern once means recognizing it instantly in either context.
+
+## A Second Real Gotcha: Image References by Name vs ID
+
+Some Docker commands, particularly docker history, can behave inconsistently when referencing an image by its tagged name versus its image ID, even when docker images clearly confirms the named image exists. If a name-based reference unexpectedly fails, retry the same command using the image ID from docker images output as a reliable fallback before assuming something is broken.
+
 ## Guardrail Check
 
 Never push an image tagged as a production version without the human operator confirming it has been tested. Never run a container with unnecessary elevated privileges or with the Docker socket mounted inside it unless there is a specific, reviewed reason.
 
 ## Reference Implementation
 
-See github.com/iam-veeramalla/Docker-Zero-to-Hero for foundational patterns and example Dockerfiles across multiple application types.
+See github.com/iam-veeramalla/Docker-Zero-to-Hero for foundational patterns and example Dockerfiles across multiple application types. See github.com/SwitchhToDevOpsIn90/devops-journey, Session 21, for a real, live example of both the PATH debugging pattern and the name-vs-ID image reference quirk, including the exact diagnostic commands used to resolve each.
