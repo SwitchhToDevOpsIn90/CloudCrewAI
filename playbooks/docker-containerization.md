@@ -30,6 +30,8 @@ Docker installed. The application's actual dependencies and runtime requirements
 
 8. Push to a container registry scoped with least-privilege credentials, matching the same IAM discipline used for AWS access elsewhere in this framework.
 
+9. Add a .dockerignore file before the first build, not after — this is genuinely a security step, not just a build-speed optimization. Without one, docker build copies everything in the current folder into the image's build context, including a .git folder, __pycache__ directories, or critically, a local .env file containing real secrets. A .dockerignore file listing at minimum .git, __pycache__, *.pyc, and .env prevents any of these from ever being baked permanently into an image layer — directly applying the same discipline as the secrets incident response playbook, but at the container-build stage specifically, before a leak can happen rather than after.
+
 ## A Real, Recurring Debugging Pattern: PATH Issues Inside Containers
 
 A command that installs successfully via apt but then fails with "executable file not found in $PATH" when run as a Dockerfile CMD or ENTRYPOINT is a genuinely common, easy-to-hit issue — not a sign anything is fundamentally wrong. Some packages install their binaries into locations not included in the container's default PATH, most commonly /usr/games for certain utility packages.
@@ -48,4 +50,4 @@ Never push an image tagged as a production version without the human operator co
 
 ## Reference Implementation
 
-See github.com/iam-veeramalla/Docker-Zero-to-Hero for foundational patterns and example Dockerfiles across multiple application types. See github.com/SwitchhToDevOpsIn90/devops-journey, Session 21, for a real, live example of both the PATH debugging pattern and the name-vs-ID image reference quirk, including the exact diagnostic commands used to resolve each.
+See github.com/iam-veeramalla/Docker-Zero-to-Hero for foundational patterns and example Dockerfiles across multiple application types. See github.com/SwitchhToDevOpsIn90/devops-journey, Session 21, for a real, live example of both the PATH debugging pattern and the name-vs-ID image reference quirk, including the exact diagnostic commands used to resolve each. See Session 22 for a real multi-stage Flask build and .dockerignore applied correctly before the first build.
