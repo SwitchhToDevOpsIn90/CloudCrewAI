@@ -2,11 +2,11 @@
 
 ## WHY
 
-Cloud costs grow silently. Unused resources, oversized instances, and forgotten test environments accumulate charges for months before anyone notices, and clients specifically value this work because it ties technical action directly to a number on their bill.
+Cloud costs grow silently. Unused resources, oversized instances, and forgotten test environments accumulate charges for months before anyone notices, and clients specifically value this work because it ties technical action directly to a number on their bill. Some costs are even more dangerous than gradual creep — automatic, unannounced jumps triggered by inaction rather than a deliberate provisioning choice.
 
 ## WHAT This Playbook Delivers
 
-An automated cost anomaly detection system, a rightsizing recommendation report based on actual usage data, and scheduled shutdown automation for non-production resources — with a documented savings percentage the client can see concretely.
+An automated cost anomaly detection system, a rightsizing recommendation report based on actual usage data, scheduled shutdown automation for non-production resources, and awareness of known automatic-escalation traps specific to individual AWS services — with a documented savings percentage the client can see concretely.
 
 ## Prerequisites
 
@@ -28,10 +28,18 @@ AWS Cost Explorer enabled on the account. Read access to billing data and resour
 
 7. Document the actual before and after cost comparison once changes have run for at least one full billing cycle, since this concrete number is the most valuable deliverable to a client.
 
+8. Before recommending or provisioning any AWS service, specifically check for known automatic cost-escalation traps unique to that service, not just its advertised baseline price. Some AWS services jump to a significantly higher cost automatically, triggered by inaction rather than a deliberate choice.
+
+## Known Automatic-Escalation Traps (verify current pricing before relying on these, as they can change)
+
+IAM Identity Center: enabling this feature can force an entire account off a Free Tier or credits-based plan immediately, regardless of the feature's own advertised cost — the trap is at the account level, not the feature's line-item price.
+
+Amazon EKS extended version support: a cluster that falls behind on Kubernetes version support automatically jumps from the standard control plane fee to a significantly higher extended-support fee — confirmed as a 6x increase (from roughly $73/month to roughly $438/month as of 2026 — verify current figures before citing) — without any active choice by the account owner, triggered purely by version staleness.
+
 ## Guardrail Check
 
-Never automatically stop or resize a resource tagged as production. Never apply a rightsizing recommendation without human review, since utilization data can miss context like planned upcoming load. Confirm the client's billing alarm exists before this playbook even begins, per the general server monitoring playbook.
+Never automatically stop or resize a resource tagged as production. Never apply a rightsizing recommendation without human review, since utilization data can miss context like planned upcoming load. Confirm the client's billing alarm exists before this playbook even begins, per the general server monitoring playbook. Before recommending any managed service with a control plane or platform fee (EKS being the clearest example), explicitly check for automatic-escalation conditions specific to that service, not just its baseline advertised price.
 
 ## Reference Implementation
 
-See AWS Cost Explorer and AWS Compute Optimizer documentation for the underlying data sources this playbook relies on. Client-specific automation should be built as a dedicated Lambda function, version controlled like any other project code.
+See AWS Cost Explorer and AWS Compute Optimizer documentation for the underlying data sources this playbook relies on. See github.com/SwitchhToDevOpsIn90/devops-journey, Session 23, for the real IAM Identity Center account-level trap discovered and avoided. See Session 28 for the EKS extended-support 6x price jump discovered during a real ECS-vs-EKS architecture decision, verified via current search rather than relied on from memory, directly informing a real, documented decision to use ECS with Fargate for a small single-service application while still fully learning EKS later in the curriculum for its genuine industry relevance.
