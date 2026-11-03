@@ -38,6 +38,9 @@ Before consulting a specific playbook, identify which real team role this task m
 | An unfamiliar existing environment, not built by you | Forward Deployed Engineer | environment-discovery.md |
 | Building or modifying a container image | Developer | docker-containerization.md |
 | Multi-service local orchestration | Developer | docker-compose-orchestration.md |
+| Kubernetes objects, self-healing, services, ingress | DevOps Engineer | kubernetes-core-and-networking.md |
+| Creating or tearing down an EKS cluster | DevOps Engineer | eks-cluster-setup.md |
+| Running a database or stateful workload on Kubernetes, PVCs, StatefulSets | DevOps Engineer | kubernetes-persistent-storage.md |
 | Getting an image to a registry, or onto another machine | DevOps Engineer | container-registry-deployment.md |
 | Provisioning cloud infrastructure | DevOps Engineer | terraform-infrastructure.md |
 | Automatic deployment on every commit | DevOps Engineer | gitops-auto-sync.md |

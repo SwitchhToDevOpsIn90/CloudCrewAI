@@ -2,7 +2,7 @@
 
 This framework grows alongside a public 90-session DevOps learning journey. Each playbook is added once the underlying skill is learned and genuinely proven — not every session produces a new playbook, only those with a genuinely new, reusable pattern. A small number of foundational team-operating playbooks (client onboarding, testing/QA, documentation, release management, production incident response, project coordination, environment discovery) were added directly, representing standard practice for a complete team rather than requiring a specific triggering session.
 
-## Complete — 22 Playbooks
+## Complete — 25 Playbooks
 
 1. Client onboarding — starting a real engagement
 2. Project coordination — ongoing status, scope-change handling
@@ -26,10 +26,13 @@ This framework grows alongside a public 90-session DevOps learning journey. Each
 20. Release management & rollback — versioning, staging, practiced rollback
 21. Production incident response — triage and diagnosis, routing to the right specific playbook
 22. AI SQL chatbot — natural language to SQL, safely read-only scoped
+23. Kubernetes core and networking — objects, self-healing, services, ingress, Secrets
+24. EKS cluster setup — permissions, Free Tier node types, multi-resource teardown verification
+25. Kubernetes persistent storage — PVC/PV, StatefulSets, reclaim policy, EBS-aware teardown
 
 ## Planned — More Playbooks From Upcoming Sessions
 
-Kubernetes orchestration and deployment patterns.
+Helm packaging and Kubernetes deployment patterns (Sessions 37-38).
 
 CI/CD pipelines — Jenkins and GitHub Actions.
 
