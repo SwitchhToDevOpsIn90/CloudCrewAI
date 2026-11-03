@@ -39,6 +39,7 @@ See docs/roadmap.md for what's planned next.
 - **AGENT.md** — universal AI entry point, read this first (includes role-based task routing table)
 - **CLAUDE.md** — Claude Code compatibility pointer
 - **docs/decision-engine.md** — the actual autonomous reasoning flow
+- **docs/vision.md** — the long-term goal: a virtual cloud engineering company, its layers, team map and milestones
 - **docs/roadmap.md** — what's built, what's planned, the future multi-agent repo plan
 - **guardrails/** — the short list of actions requiring human approval
 - **playbooks/** — all 25 step-by-step patterns, one per real capability
