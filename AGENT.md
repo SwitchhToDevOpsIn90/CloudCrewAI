@@ -41,6 +41,7 @@ Before consulting a specific playbook, identify which real team role this task m
 | Kubernetes objects, self-healing, services, ingress | DevOps Engineer | kubernetes-core-and-networking.md |
 | Creating or tearing down an EKS cluster | DevOps Engineer | eks-cluster-setup.md |
 | Running a database or stateful workload on Kubernetes, PVCs, StatefulSets | DevOps Engineer | kubernetes-persistent-storage.md |
+| Packaging, installing, upgrading or rolling back an app with Helm | DevOps Engineer | helm-chart-packaging-and-releases.md |
 | Getting an image to a registry, or onto another machine | DevOps Engineer | container-registry-deployment.md |
 | Provisioning cloud infrastructure | DevOps Engineer | terraform-infrastructure.md |
 | Automatic deployment on every commit | DevOps Engineer | gitops-auto-sync.md |
@@ -66,6 +67,7 @@ If a task spans multiple roles (common in practice), apply each relevant playboo
 2. Identify the relevant role(s) from the table above, then check playbooks/ for the matching playbook.
 3. Before executing anything from a playbook, check guardrails/never-do-without-approval.md — if the task involves any listed action, pause and inform the human operator with the specific action and reason, then wait for explicit confirmation before proceeding with that specific step only (not the entire task).
 4. If no playbook exists for the task, propose a plan, execute autonomously by default (per the mode above), and note that a new playbook could be added afterward if this pattern recurs.
+5. On every task, follow docs/reliability-protocol.md: define "done" first, verify with real commands, label claims confirmed / inferred / unknown, limit blast radius, and report what was verified and how.
 
 ## Model-Specific Notes
 

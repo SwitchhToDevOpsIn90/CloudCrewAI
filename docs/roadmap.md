@@ -4,7 +4,7 @@ The long-term goal and milestones are in docs/vision.md.
 
 This framework grows alongside a public 90-session DevOps learning journey. Each playbook is added once the underlying skill is learned and genuinely proven — not every session produces a new playbook, only those with a genuinely new, reusable pattern. A small number of foundational team-operating playbooks (client onboarding, testing/QA, documentation, release management, production incident response, project coordination, environment discovery) were added directly, representing standard practice for a complete team rather than requiring a specific triggering session.
 
-## Complete — 25 Playbooks
+## Complete — 26 Playbooks
 
 1. Client onboarding — starting a real engagement
 2. Project coordination — ongoing status, scope-change handling
@@ -31,10 +31,11 @@ This framework grows alongside a public 90-session DevOps learning journey. Each
 23. Kubernetes core and networking — objects, self-healing, services, ingress, Secrets
 24. EKS cluster setup — permissions, Free Tier node types, multi-resource teardown verification
 25. Kubernetes persistent storage — PVC/PV, StatefulSets, reclaim policy, EBS-aware teardown
+26. Helm chart packaging and releases — values overrides, revisions, rollback, automatic rollback on failure
 
 ## Planned — More Playbooks From Upcoming Sessions
 
-Helm packaging and Kubernetes deployment patterns (Sessions 37-38).
+Advanced Helm templating (Session 38) and further Kubernetes deployment patterns.
 
 CI/CD pipelines — Jenkins and GitHub Actions.
 

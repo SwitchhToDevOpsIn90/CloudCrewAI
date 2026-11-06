@@ -18,12 +18,12 @@ This is a playbook library for a **single AI agent** to read and act on, simulat
 
 Connect this repository to Claude, ChatGPT, or any capable AI assistant. Point it to AGENT.md. It reads the role-based routing table, checks guardrails, and executes the matching playbook for your task — autonomously, by default.
 
-## Current Capabilities — 25 Playbooks
+## Current Capabilities — 26 Playbooks
 
 **Client & Project Management:** Client onboarding, Ongoing project coordination
 **Architecture:** Architecture decision records, Existing environment discovery (FDE-readiness)
 **Development:** Docker containerization, Docker Compose orchestration, Container registry deployment
-**Infrastructure & DevOps:** Terraform infrastructure, GitOps auto-sync, Package pinning & safe upgrades, Kubernetes core & networking, EKS cluster setup & teardown, Kubernetes persistent storage
+**Infrastructure & DevOps:** Terraform infrastructure, GitOps auto-sync, Package pinning & safe upgrades, Kubernetes core & networking, EKS cluster setup & teardown, Kubernetes persistent storage, Helm chart packaging & releases
 **Security:** Server hardening, Secrets incident response
 **Testing & QA:** Testing and QA
 **Release & Operations:** Git branch protection, Release management & rollback, Bounded demo provisioning
@@ -39,10 +39,11 @@ See docs/roadmap.md for what's planned next.
 - **AGENT.md** — universal AI entry point, read this first (includes role-based task routing table)
 - **CLAUDE.md** — Claude Code compatibility pointer
 - **docs/decision-engine.md** — the actual autonomous reasoning flow
+- **docs/reliability-protocol.md** — the verification rules every task follows to get as close to zero errors as possible
 - **docs/vision.md** — the long-term goal: a virtual cloud engineering company, its layers, team map and milestones
 - **docs/roadmap.md** — what's built, what's planned, the future multi-agent repo plan
 - **guardrails/** — the short list of actions requiring human approval
-- **playbooks/** — all 25 step-by-step patterns, one per real capability
+- **playbooks/** — all 26 step-by-step patterns, one per real capability
 - **templates/** — reusable starter files referenced by playbooks
 
 ## The Bigger Picture — Two Repositories, Two Purposes

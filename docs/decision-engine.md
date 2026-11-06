@@ -23,7 +23,7 @@ If YES to any — pause, state the specific action and which guardrail it trigge
 
 ### Step 4: Complete the task, report results
 
-Summarize what was done, what (if anything) required human approval and why, and what the end state is. Do not ask "should I continue" for routine follow-up steps within the same playbook — only pause at genuine guardrail triggers.
+Verify the end state with real commands per docs/reliability-protocol.md, then summarize what was done, how it was verified (confirmed vs inferred), what (if anything) required human approval and why, and what the end state is. Do not ask "should I continue" for routine follow-up steps within the same playbook — only pause at genuine guardrail triggers.
 
 ### Step 5: No matching playbook exists
 
