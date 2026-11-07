@@ -18,7 +18,7 @@ CloudCrewAI is built as seven layers. Each layer fixes a failure that the layer 
 | 4 | Policy enforcement | Hooks that block guardrail actions mechanically (for example apply without a plan, delete without approval, spend above the ceiling) | Planned |
 | 5 | Project ledger | A per-project record of decisions, cost ceiling, every resource created, and every human intervention, so work can be resumed and torn down from facts | Template started (templates/resource-ledger.md) |
 | 6 | Independent verifier | A separate reviewer role, run in a fresh context, that checks high-impact work without having produced it | Planned |
-| 7 | Evaluation harness | Realistic scenarios with scoring, run against multiple AI models, producing a measured pass rate | Planned |
+| 7 | Evaluation harness | Realistic scenarios with scoring, run against multiple AI models, producing a measured pass rate | v0 started (evals/: 8 blind paper scenarios, baseline recorded) |
 
 The multi-agent orchestration repository remains a separate project, built after Session 90 on top of these layers.
 

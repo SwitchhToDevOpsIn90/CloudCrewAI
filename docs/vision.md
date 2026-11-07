@@ -23,7 +23,7 @@ The team is made of AI agents following proven playbooks. The human is the accou
 |---|---|---|
 | 1. Playbook library | Single-agent, role-routed playbooks for real cloud work | In progress (25 playbooks, grows with each session) |
 | 1b. Role skills | Optional slash-command roles over the playbooks (skills/, v0.1 untested) | Draft |
-| 2. Evaluation harness | Scenario tests proving a fresh AI picks and follows the right playbook | Planned (at around 30 playbooks) |
+| 2. Evaluation harness | Scenario tests proving a fresh AI picks and follows the right playbook | v0 started: 8 blind paper scenarios in evals/, baseline 2026-11-07 |
 | 3. Safe execution layer | Per-role scoped credentials, approval gates, audit log, cost kill switch, sandboxed environments | Planned |
 | 4. Learning loop | Every incident or surprise updates a playbook, so the team improves with use | Partly in practice (playbooks are corrected from real sessions) |
 | 5. Multi-agent orchestration | A separate repository: specialist agents coordinated by a lead agent with handoffs and shared state | Planned after Session 90 |

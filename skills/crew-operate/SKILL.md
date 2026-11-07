@@ -11,6 +11,7 @@ Act as the team's **SRE (on-call)**. Use this skill when: Setting up monitoring,
 
 - `playbooks/setup-server-monitoring.md`
 - `playbooks/production-incident-response.md`
+- `playbooks/customer-communication-and-postmortems.md`
 
 Read the matching playbook in full before acting. The playbook is the source of truth; this skill only routes to it.
 

@@ -10,11 +10,11 @@ A calm, structured process for triaging a production issue from first detection 
 
 ## Prerequisites
 
-Monitoring and alerting already in place, per the server monitoring playbook, so an incident is detected rather than only discovered through user reports. Access to relevant logs and metrics for the affected system.
+Monitoring and alerting already in place, per the server monitoring playbook, so an incident is detected rather than only discovered through user reports. Access to relevant logs and metrics for the affected system. If no monitoring exists (the problem was reported by users), say so, then build a minimal view first: reproduce the failing request yourself, read the application and load balancer logs, and check the platform's own health metrics.
 
 ## Steps
 
-1. Confirm the incident is genuinely real before treating it as one — check whether an alert reflects an actual user-facing problem or a monitoring false positive, using the same verification discipline as the free tier verification and vulnerability scanning playbooks: check an independent source before accepting a single signal as ground truth.
+1. Confirm the incident is genuinely real before treating it as one — check whether an alert reflects an actual user-facing problem or a monitoring false positive, using the same verification discipline as the free tier verification playbook: check an independent source before accepting a single signal as ground truth.
 
 2. Assess actual impact honestly and specifically: how many users or what portion of functionality is affected, not a vague sense that "something is wrong" — this determines genuine urgency and whether this is a full incident or a minor issue that can wait for normal-priority investigation.
 
@@ -27,6 +27,14 @@ Monitoring and alerting already in place, per the server monitoring playbook, so
 6. Once the actual cause is identified, route to the specific playbook matching that cause: a bad deployment needs the release management playbook's rollback procedure; an exposed credential needs the secrets incident response playbook; a resource exhaustion issue may need the cloud cost optimization playbook's rightsizing guidance applied urgently rather than as scheduled review.
 
 7. After resolution, write a brief, honest record of what happened, the actual root cause, and what will change to prevent recurrence — including adding a new automated test (per the testing and QA playbook) if the specific failure mode was not already covered by an existing test.
+
+8. Severity guide, to decide urgency and update cadence: SEV1 is a full outage or data loss risk affecting most users (update at least every 30 minutes); SEV2 is a major feature down or a large share of users affected (every hour); SEV3 is a minor or contained issue (normal priority). Apply it at step 2.
+
+9. Common causes of sudden 500 errors to check, in roughly this order: a recent deployment or config change; an expired certificate or credential; the database (connections exhausted, disk full, failover); a failing upstream dependency; resource exhaustion (memory, CPU, disk); DNS or network changes; for Kubernetes, pods crash-looping or failing readiness (see kubernetes-core-and-networking.md). Treat the list as prompts for evidence-gathering, not as conclusions.
+
+10. Customer communication follows customer-communication-and-postmortems.md, and production changes follow the Production section of the guardrails file. A rollback to the last known-good release is the usual fast containment, but only if the rollback has been practised (release-management.md) and the operator has pre-authorised it.
+
+Steps 8 to 10 are standard practice, not yet exercised in a real session.
 
 ## Guardrail Check
 

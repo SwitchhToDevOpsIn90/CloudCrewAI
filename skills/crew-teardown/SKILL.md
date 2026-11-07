@@ -12,6 +12,7 @@ Act as the team's **SRE / DevOps**. Use this skill when: Ending a demo, abandoni
 - `playbooks/bounded-demo-provisioning.md`
 - `playbooks/eks-cluster-setup.md`
 - `playbooks/kubernetes-persistent-storage.md`
+- `playbooks/decommission-and-data-deletion.md`
 
 Read the matching playbook in full before acting. The playbook is the source of truth; this skill only routes to it.
 

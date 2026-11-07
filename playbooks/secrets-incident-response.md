@@ -22,6 +22,16 @@ Read or execute access to the location being audited (a repository, a live serve
 
 4. Choose manual console work or CLI automation based on whether this specific task is a one-time incident or something that will recur. A single client's single exposed key, handled once, is reasonably done manually in the console, especially when visual confirmation of the full picture matters or when the CLI itself lacks the needed permission. Anything that will repeat — across multiple servers, multiple clients, or on any kind of schedule — should be scripted and considered as a candidate for its own dedicated playbook here.
 
+5. Assess whether the credential was abused, as a read-only step. For an AWS key: `aws iam get-access-key-last-used` for when and where it was last used, and a CloudTrail review for the period since exposure (unfamiliar IP addresses, new IAM users, keys or roles, resources created in unusual regions, access to storage). Check billing for spikes. Label the result confirmed, inferred or unknown; absence of evidence is not proof nobody copied the key.
+
+6. Treat anything exposed in a public repository as already compromised, even if it was only there briefly, because automated scanners harvest keys within minutes. Containment (step 2) comes first. Removing the secret from the current files is necessary but does not un-expose it. Rewriting git history (for example with git filter-repo) is a force-push that changes every commit hash and affects all collaborators, so it needs human approval; it is secondary once the credential is dead. Also consider forks, clones, cached views and any hosting-provider secret-scanning alert or provider notice that needs a reply.
+
+7. Deactivate first, delete later. Deactivating a key is reversible if a live service turns out to depend on it; delete it only after the replacement is confirmed working and nothing depends on the old one.
+
+8. Add prevention: run `tools/scan-secrets.sh` (or a dedicated scanner) before every commit, and consider a pre-commit hook or CI scan.
+
+Steps 5 to 8 are standard incident practice, not yet exercised in a real session.
+
 ## Guardrail Check
 
 Never leave real credential values in any saved documentation, chat log, or screenshot, even after the credential has been fully revoked or deleted — always redact to a masked placeholder. Never delay containment to first investigate root cause; contain first, understand afterward. Confirm with the human operator before considering an incident fully closed if the exposed secret had access to production client data, regardless of how quickly it was contained.
