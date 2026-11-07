@@ -32,4 +32,4 @@ Does not receive: the producer's reasoning, its confidence, or its own "verified
 
 ## How it was tested
 
-See evals/results/2026-11-07-verifier-test.md (fixture in evals/fixtures/verifier-teardown/) for the planted-error test: a report with deliberately false and over-confident claims was given to a fresh agent, and the verdicts were compared against the known answers.
+See evals/results/2026-11-07-verifier-test.md (fixture in evals/fixtures/verifier-teardown/) and 2026-11-07-verifier-test-2-hard.md (fixture in evals/fixtures/verifier-teardown-hard/) for the planted-error tests: a report with deliberately false and over-confident claims was given to a fresh agent, and the verdicts were compared against the known answers.

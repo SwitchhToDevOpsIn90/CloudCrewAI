@@ -1,0 +1,3 @@
+captured 19:41
+$ aws elbv2 describe-load-balancers --region eu-west-1
+{ "LoadBalancers": [] }
