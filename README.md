@@ -44,6 +44,9 @@ See docs/roadmap.md for what's planned next.
 - **docs/roadmap.md** — what's built, what's planned, the future multi-agent repo plan
 - **guardrails/** — the short list of actions requiring human approval
 - **playbooks/** — all 26 step-by-step patterns, one per real capability
+- **docs/adr-001-architecture.md** — the seven-layer architecture and build order
+- **tools/** — deterministic scripts (secret scan, teardown sweep) the agent runs instead of trusting its own judgment
+- **skills/** — optional slash-command roles (`/crew-sprint` and `/crew-*`) that route to the playbooks
 - **templates/** — reusable starter files referenced by playbooks
 
 ## The Bigger Picture — Two Repositories, Two Purposes

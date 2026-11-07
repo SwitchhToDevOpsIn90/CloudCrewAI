@@ -69,6 +69,14 @@ If a task spans multiple roles (common in practice), apply each relevant playboo
 4. If no playbook exists for the task, propose a plan, execute autonomously by default (per the mode above), and note that a new playbook could be added afterward if this pattern recurs.
 5. On every task, follow docs/reliability-protocol.md: define "done" first, verify with real commands, label claims confirmed / inferred / unknown, limit blast radius, and report what was verified and how.
 
+## Tools
+
+Run `tools/scan-secrets.sh <path>` before every commit, and `tools/teardown-check.sh <region> <name-filter>` after any cost-bearing demo (it is read-only). Use `templates/resource-ledger.md` to record every cost-bearing resource as it is created. See docs/adr-001-architecture.md.
+
+## Optional: Slash-Command Skills
+
+Tools that support skills (for example Claude Code) can use the `skills/` folder: `/crew-sprint` runs the full workflow and each `/crew-*` skill acts as one team role. The skills only route to the playbooks, which remain the source of truth. See skills/README.md.
+
 ## Model-Specific Notes
 
 Different AI tools have different native capabilities (some can execute shell commands directly, some can only suggest commands for a human to run, some have persistent file access and some do not). This framework assumes the AI has some form of command execution or code-writing capability. If your specific tool cannot execute commands directly, treat every "execute" instruction in a playbook as "write out the exact command for the human operator to run and report back the result."

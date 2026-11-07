@@ -1,5 +1,7 @@
 # Vision: A Virtual Cloud Engineering Company
 
+The architecture that implements this vision is recorded in docs/adr-001-architecture.md.
+
 ## The Goal
 
 Build a virtual cloud engineering team that can deliver real cloud projects end to end (design, build, secure, deploy, monitor, optimize, document, and operate) with minimal human involvement, so a future one-person company can serve clients that would normally need a whole team.
@@ -20,6 +22,7 @@ The team is made of AI agents following proven playbooks. The human is the accou
 | Layer | What it is | Status |
 |---|---|---|
 | 1. Playbook library | Single-agent, role-routed playbooks for real cloud work | In progress (25 playbooks, grows with each session) |
+| 1b. Role skills | Optional slash-command roles over the playbooks (skills/, v0.1 untested) | Draft |
 | 2. Evaluation harness | Scenario tests proving a fresh AI picks and follows the right playbook | Planned (at around 30 playbooks) |
 | 3. Safe execution layer | Per-role scoped credentials, approval gates, audit log, cost kill switch, sandboxed environments | Planned |
 | 4. Learning loop | Every incident or surprise updates a playbook, so the team improves with use | Partly in practice (playbooks are corrected from real sessions) |
