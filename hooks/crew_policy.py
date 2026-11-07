@@ -3,6 +3,7 @@
 that guardrails/never-do-without-approval.md says need human approval.
 
 Input: Claude Code PreToolUse JSON on stdin. Exit 0 = allow, exit 2 = block (reason on stderr).
+Own demo namespace: a namespace listed in CREW_OWNED (default .crew/owned.txt) may be deleted without approval.
 Approval: the human operator adds the EXACT command, one per line, to the file named by
 CREW_APPROVALS (default .crew/approvals.txt). An approved command is allowed once matched exactly.
 """
@@ -47,10 +48,24 @@ def approved(cmd):
     except OSError:
         return False
 
+def owned_names():
+    """Names the agent created itself this engagement (recorded in the resource ledger),
+    one per line in CREW_OWNED (default .crew/owned.txt), e.g. a demo namespace."""
+    path = os.environ.get("CREW_OWNED", ".crew/owned.txt")
+    try:
+        with open(path) as f:
+            return {l.strip() for l in f if l.strip() and not l.startswith("#")}
+    except OSError:
+        return set()
+
+def deletes_only_owned_namespace(cmd):
+    m = re.fullmatch(r"\s*kubectl\s+delete\s+(?:ns|namespace)[ /]+([a-z0-9-]+)(\s+--context[ =]\S+)?\s*", cmd)
+    return bool(m) and m.group(1) in owned_names()
+
 def check(tool, inp):
     if tool == "Bash":
         cmd = inp.get("command", "")
-        if approved(cmd):
+        if approved(cmd) or deletes_only_owned_namespace(cmd):
             return None
         for pat, why in BASH_RULES:
             if re.search(pat, cmd):

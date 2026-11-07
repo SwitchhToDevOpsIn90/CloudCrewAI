@@ -44,6 +44,10 @@ Never mark a project milestone complete to a client without the human operator's
 
 Pause only the specific action that triggered the guardrail — not the entire task. Inform the human operator exactly what action was about to happen and why it triggered review, then continue with everything else in the task that does not require approval, once that one item is resolved.
 
+Never choose a design to avoid an approval pause or a hook block. If the safer design (for example a dedicated namespace) is blocked by a guardrail, stop and ask, or record the resource as owned and proceed through the sanctioned route. Never share a namespace or resource group with workloads you did not create.
+
+When more than one kubectl context or AWS profile exists on the machine, pin every command explicitly (`--context`, `--profile`) and state which one is in use.
+
 ## Definitions
 
 The human operator is the named person accountable for the engagement (the person running this crew), not the client and not another agent. Client approval of a message or milestone is obtained by the operator, after the operator has reviewed it. Temporarily broadening IAM permissions for a CLI user is a security change: state the exact change, get approval, and revoke it last, recording both in the resource ledger.
