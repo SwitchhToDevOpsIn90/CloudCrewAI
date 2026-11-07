@@ -20,6 +20,6 @@ A cron-scheduled script that detects new commits on GitHub and pulls them automa
 
 This only pulls code, never pushes or deletes automatically. Confirm branch protection prevents unreviewed code reaching main, since anything merged there auto-deploys.
 
-## Reference
+## Reference Implementation
 
 See devops-journey repo, gitops-sync.sh, Session 15.
