@@ -73,6 +73,10 @@ The seven layers (playbooks, role skills, tools, policy hooks, project ledger, i
 
 Built: layers 1 to 4, 6 and 7 (v0). In progress: the project ledger (layer 5), harder verifier tests (cross-file contradictions, missing evidence), live use on non-demo accounts. A separate multi-agent orchestration repo is planned after the playbook library matures; this repo is deliberately a single-agent library. See `docs/roadmap.md`.
 
+## License
+
+MIT, see `LICENSE`. The software is provided as is: playbooks that touch real infrastructure can cause cost or data loss if used without review, so read the guardrails and test on a free local setup first.
+
 ## Origin
 
 Built alongside a public 90-session DevOps learning journey by @SwitchToDevOpsIn90. The playbooks cite the exact sessions and commits they come from.
