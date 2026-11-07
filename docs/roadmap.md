@@ -31,14 +31,14 @@ This framework grows alongside a public 90-session DevOps learning journey. Each
 23. Kubernetes core and networking — objects, self-healing, services, ingress, Secrets
 24. EKS cluster setup — permissions, Free Tier node types, multi-resource teardown verification
 25. Kubernetes persistent storage — PVC/PV, StatefulSets, reclaim policy, EBS-aware teardown
-26. Helm chart packaging and releases — values overrides, revisions, rollback, automatic rollback on failure
+26. Helm chart packaging and releases — values overrides, revisions, rollback, automatic rollback on failure, custom templates, checksum rollout, per-environment values, Kustomize comparison, named templates, required, values schema, release inspection
 27. Customer communication and post-incident reports — honest drafts, no unverified causes or promises
 28. Decommissioning and data deletion — authority, inventory, backup decision, exact-resource approval, ordered deletion
 29. Offboarding and identity cleanup — departed engineer IAM user, keys and buckets: contain first, exact-resource approval, verified deletion
 
 ## Planned — More Playbooks From Upcoming Sessions
 
-Advanced Helm templating (Session 38) and further Kubernetes deployment patterns.
+Further Kubernetes deployment patterns.
 
 CI/CD pipelines — Jenkins and GitHub Actions.
 
