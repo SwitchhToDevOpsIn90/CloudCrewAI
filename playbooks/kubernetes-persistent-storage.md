@@ -10,7 +10,7 @@ A database running as a StatefulSet on a cloud block volume, with data proven to
 
 ## Prerequisites
 
-A local cluster (Minikube) for the concept tests, which cost nothing. For the cloud portion: a working EKS setup per eks-cluster-setup.md, an explicit cost ceiling per bounded-demo-provisioning.md, and a Free Tier eligible node type (t3.small). Disabling the NAT gateway in the cluster config (`vpc.nat.gateway: Disable`) avoids an hourly NAT charge for a short demo.
+A local cluster (Minikube) for the concept tests, which cost nothing. For the cloud portion: a working EKS setup per eks-cluster-setup.md, an explicit cost ceiling per bounded-demo-provisioning.md, and a small node type (t3.small). Check current free-tier eligibility for the account per free-tier-verification.md rather than assuming it; the EKS control plane always bills. Disabling the NAT gateway in the cluster config (`vpc.nat.gateway: Disable`) avoids an hourly NAT charge for a short demo.
 
 ## Steps
 

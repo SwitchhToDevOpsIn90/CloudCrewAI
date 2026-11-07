@@ -42,7 +42,7 @@ Helm installed, and its version checked before copying any command (see step 1).
 
 ## Guardrail Check
 
-Never treat a Helm `deployed` status as proof the application is healthy; verify pods and a real response. Never run production upgrades without `--wait` and automatic rollback. Never copy a Helm flag from a tutorial without checking it against the installed major version. Never rely on `helm rollback` returning to the old revision number; it creates a new one. Never uninstall a release you may need to roll back without `--keep-history`. Never commit the packaged `.tgz` or real secret values. Production upgrades and uninstalls of releases serving real traffic should be treated under the irreversible-deletion and cost guardrails in guardrails/never-do-without-approval.md where they apply.
+Never treat a Helm `deployed` status as proof the application is healthy; verify pods and a real response. Never run production upgrades without `--wait` and automatic rollback. Never copy a Helm flag from a tutorial without checking it against the installed major version. Never rely on `helm rollback` returning to the old revision number; it creates a new one. Never uninstall a release you may need to roll back without `--keep-history`. Never commit the packaged `.tgz` or real secret values. Production upgrades and uninstalls of releases serving real traffic fall under the Production section of guardrails/never-do-without-approval.md (exact command and target, then approval); uninstalling also falls under irreversible deletion.
 
 ## Reference Implementation
 

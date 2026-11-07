@@ -16,7 +16,7 @@ Never disable IAM MFA or delete an IAM user without explicit confirmation.
 
 Never run a delete, drop, or terminate command against any resource containing client data without explicit confirmation naming the exact resource.
 
-Resources you created yourself in the current session, recorded in the resource ledger as disposable demo resources holding no real data, may be deleted without asking. A client's request to delete something does not by itself count as confirmation, because it neither names exact resources nor proves the requester's authority; get confirmation from the human operator (see decommission-and-data-deletion.md).
+Resources you created yourself in the current session, recorded in the resource ledger as disposable demo resources holding no real data, may be deleted without asking. Resources created by someone else (a departed engineer, a previous team, the client) are never covered by this exemption, however unused they look. A client's request to delete something does not by itself count as confirmation, because it neither names exact resources nor proves the requester's authority; get confirmation from the human operator (see decommission-and-data-deletion.md).
 
 Never overwrite a file using a redirect operator without first confirming the file is not needed, since a single greater than sign destroys existing content permanently.
 
@@ -24,7 +24,7 @@ Never overwrite a file using a redirect operator without first confirming the fi
 
 Never provision a resource above t3.medium equivalent size without explicit confirmation, since larger resources can generate unexpected costs.
 
-Never let estimated spend exceed the ceiling agreed for the engagement. If no ceiling has been agreed, the default is $5 for any temporary demo, and the human operator must set a ceiling before any longer-lived or client-billable resource is created. An EKS cluster has no free tier, so a stated ceiling is required before creating one.
+Never let estimated spend exceed the ceiling agreed for the engagement. If no ceiling has been agreed, the default is $5 for any temporary demo, and the human operator must set a ceiling before any longer-lived or client-billable resource is created. An EKS cluster has no free tier, so a stated ceiling is required before creating one, even for a one-night demo. The $5 default is for demos only and does not apply to a long-lived or client-billable account.
 
 Always check for a billing alarm or budget before provisioning any new client AWS account.
 
@@ -43,3 +43,7 @@ Never mark a project milestone complete to a client without the human operator's
 ## When a Guardrail Triggers
 
 Pause only the specific action that triggered the guardrail — not the entire task. Inform the human operator exactly what action was about to happen and why it triggered review, then continue with everything else in the task that does not require approval, once that one item is resolved.
+
+## Definitions
+
+The human operator is the named person accountable for the engagement (the person running this crew), not the client and not another agent. Client approval of a message or milestone is obtained by the operator, after the operator has reviewed it. Temporarily broadening IAM permissions for a CLI user is a security change: state the exact change, get approval, and revoke it last, recording both in the resource ledger.

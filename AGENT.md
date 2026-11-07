@@ -54,6 +54,7 @@ Before consulting a specific playbook, identify which real team role this task m
 | A live production issue, uncertain cause | SRE (on-call) | production-incident-response.md |
 | Telling customers about an incident, a post-incident report | Project Manager / SRE | customer-communication-and-postmortems.md |
 | Deleting a client's old environment or data | DevOps Engineer | decommission-and-data-deletion.md |
+| Removing a departed engineer's IAM user, keys or buckets | DevOps Engineer | offboarding-and-identity-cleanup.md |
 | Ongoing monitoring, alerting setup | SRE | setup-server-monitoring.md |
 | A one-time, cost-bearing cloud demo | SRE / DevOps | bounded-demo-provisioning.md |
 | Client bill, cost review, spend anomaly | FinOps | cloud-cost-optimization.md |

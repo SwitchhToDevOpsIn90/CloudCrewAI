@@ -28,7 +28,7 @@ Monitoring and alerting already in place, per the server monitoring playbook, so
 
 7. After resolution, write a brief, honest record of what happened, the actual root cause, and what will change to prevent recurrence — including adding a new automated test (per the testing and QA playbook) if the specific failure mode was not already covered by an existing test.
 
-8. Severity guide, to decide urgency and update cadence: SEV1 is a full outage or data loss risk affecting most users (update at least every 30 minutes); SEV2 is a major feature down or a large share of users affected (every hour); SEV3 is a minor or contained issue (normal priority). Apply it at step 2.
+8. Severity guide, to decide urgency and update cadence: SEV1 is a full outage or data loss risk affecting most users (update at least every 30 minutes); SEV2 is a major feature down or roughly a quarter or more of users affected (every hour); if the share is unknown, treat it as the higher severity until measured; SEV3 is a minor or contained issue (normal priority). Apply it at step 2.
 
 9. Common causes of sudden 500 errors to check, in roughly this order: a recent deployment or config change; an expired certificate or credential; the database (connections exhausted, disk full, failover); a failing upstream dependency; resource exhaustion (memory, CPU, disk); DNS or network changes; for Kubernetes, pods crash-looping or failing readiness (see kubernetes-core-and-networking.md). Treat the list as prompts for evidence-gathering, not as conclusions.
 
