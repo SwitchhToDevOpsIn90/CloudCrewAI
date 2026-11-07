@@ -18,7 +18,7 @@ This is a playbook library for a **single AI agent** to read and act on, simulat
 
 Connect this repository to Claude, ChatGPT, or any capable AI assistant. Point it to AGENT.md. It reads the role-based routing table, checks guardrails, and executes the matching playbook for your task — autonomously, by default.
 
-## Current Capabilities — 28 Playbooks
+## Current Capabilities — 29 Playbooks
 
 **Client & Project Management:** Client onboarding, Ongoing project coordination
 **Architecture:** Architecture decision records, Existing environment discovery (FDE-readiness)
@@ -27,7 +27,7 @@ Connect this repository to Claude, ChatGPT, or any capable AI assistant. Point i
 **Security:** Server hardening, Secrets incident response
 **Testing & QA:** Testing and QA
 **Release & Operations:** Git branch protection, Release management & rollback, Bounded demo provisioning
-**Reliability (SRE):** Server monitoring, Production incident response, Customer communication & post-incident reports, Decommissioning & data deletion
+**Reliability (SRE):** Server monitoring, Production incident response, Customer communication & post-incident reports, Decommissioning & data deletion, Offboarding & identity cleanup
 **Cost (FinOps):** Cloud cost optimization, Free Tier verification
 **Documentation:** Documentation standards
 **AI/Data:** AI SQL chatbot
@@ -43,7 +43,7 @@ See docs/roadmap.md for what's planned next.
 - **docs/vision.md** — the long-term goal: a virtual cloud engineering company, its layers, team map and milestones
 - **docs/roadmap.md** — what's built, what's planned, the future multi-agent repo plan
 - **guardrails/** — the short list of actions requiring human approval
-- **playbooks/** — all 28 step-by-step patterns, one per real capability
+- **playbooks/** — all 29 step-by-step patterns, one per real capability
 - **docs/adr-001-architecture.md** — the seven-layer architecture and build order
 - **evals/** — blind test scenarios and recorded results measuring whether a fresh AI uses the library correctly
 - **tools/** — deterministic scripts (secret scan, teardown sweep) the agent runs instead of trusting its own judgment
