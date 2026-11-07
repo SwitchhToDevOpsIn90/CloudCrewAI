@@ -1,0 +1,2 @@
+$ aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE DELETE_FAILED
+{ "StackSummaries": [ { "StackName": "eksctl-demo-cluster", "StackStatus": "DELETE_FAILED" } ] }

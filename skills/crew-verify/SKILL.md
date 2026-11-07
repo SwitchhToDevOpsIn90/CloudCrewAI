@@ -10,6 +10,7 @@ Act as the team's **QA Engineer**. Use this skill when: Before release, and afte
 ## Playbooks to use
 
 - `playbooks/testing-and-qa.md`
+- `docs/independent-verifier.md`
 
 Read the matching playbook in full before acting. The playbook is the source of truth; this skill only routes to it.
 
@@ -18,7 +19,7 @@ Read the matching playbook in full before acting. The playbook is the source of 
 1. Re-read the real state with commands; do not trust the builder's summary.
 2. Run the tests and the checks that prove the stated success criteria.
 3. Check the opposite direction too: nothing unexpected exists or is running.
-4. For high-impact work, use a fresh context or second pass that did not produce the work.
+4. For high-impact work, use a fresh context or second pass that did not produce the work, following `docs/independent-verifier.md` with `templates/verification-request.md` and `templates/verification-report.md`. Default to doubt: a claim with no evidence you saw yourself is UNVERIFIED.
 
 ## Output (hand-off)
 
