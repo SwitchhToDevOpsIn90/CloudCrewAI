@@ -1,0 +1,3 @@
+captured 18:02
+$ aws ec2 describe-instances --region us-east-1 --filters Name=tag:project,Values=demo Name=instance-state-name,Values=running
+{ "Reservations": [] }

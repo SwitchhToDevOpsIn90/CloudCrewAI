@@ -1,0 +1,6 @@
+18:10 kubectl delete statefulset postgres -n demo
+18:12 kubectl delete pvc data-postgres-0 -n demo
+18:14 aws ec2 describe-volumes  -> no demo volumes
+18:20 aws ec2 delete-snapshot --snapshot-id snap-0f00ba4 (named: demo-postgres-final)
+18:31 eksctl delete cluster --name demo --region us-east-1 --wait
+19:30 eksctl: cluster deleted

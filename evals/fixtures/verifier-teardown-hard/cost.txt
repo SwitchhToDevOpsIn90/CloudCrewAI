@@ -1,0 +1,3 @@
+captured 19:45
+AWS Cost Explorer, project=demo, Nov 6 - Nov 7: $0.42
+Note shown by the console: "Cost Explorer data can take up to 24 hours to update."
