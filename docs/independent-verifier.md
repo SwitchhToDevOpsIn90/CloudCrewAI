@@ -29,6 +29,8 @@ Does not receive: the producer's reasoning, its confidence, or its own "verified
 - Default to doubt. A claim with no evidence the verifier can see is UNVERIFIED, not PASS.
 - Same facts, fresh eyes: run it as a separate agent or fresh context, never in the producer's session.
 - A verifier is not a guarantee. It reduces errors; the accountable human operator still signs off on high-impact work.
+- Claude Code subagents cannot write files, so the verifier returns its report as text and the producer saves it. Save it unedited, or label it plainly as condensed; never call a condensed copy verbatim.
+- The producer never pre-fills "Verified by" cells or other references to a verification that has not run yet. Fill them only with the verdicts the verifier actually returned (both caught by the verifier in sprint 2, 2026-11-07).
 
 ## How it was tested
 

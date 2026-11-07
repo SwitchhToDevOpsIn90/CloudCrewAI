@@ -19,10 +19,11 @@ A namespace the agent created itself and recorded in the resource ledger can be 
 Copy `hooks/settings.example.json` into `.claude/settings.json` of the project the agent works in, with the path to this repo's `hooks/crew_policy.py`.
 
 ## Test
-`bash hooks/test_policy.sh` (22 cases, passing as of this commit).
+`bash hooks/test_policy.sh` (29 cases).
 
 ## Known limits
 - Pattern matching, not understanding: a command built indirectly (script file, variable, `bash -c`) can slip past. It is a safety net, not a replacement for the guardrails or the independent verifier (layer 6).
 - Blocks whole patterns, so read-only commands containing `0.0.0.0/0` are blocked too; the operator approves them.
 - The demo-resource exemption cannot be detected by the hook; the operator approves those commands too.
-- Not yet tested inside a live Claude Code session; only against sample tool calls.
+- Live result (sprint 2, 2026-11-07): in a real Claude Code session the owned-namespace exemption allowed deleting the agent's own namespace without approval. The hook also blocked two plain file-edit commands whose heredoc text contained a namespace-delete string. Fixed since: heredoc bodies that are only data (for example written to a file with cat) are no longer checked, while a heredoc fed to a shell or interpreter still is; `kubectl --context X delete namespace <owned>` is now accepted too.
+- Still pattern matching: a deletion hidden in a variable, a script file or an encoded string can pass. The verifier and the operator remain the backstop.

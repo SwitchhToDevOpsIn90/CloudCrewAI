@@ -59,16 +59,40 @@ def owned_names():
         return set()
 
 def deletes_only_owned_namespace(cmd):
-    m = re.fullmatch(r"\s*kubectl\s+delete\s+(?:ns|namespace)[ /]+([a-z0-9-]+)(\s+--context[ =]\S+)?\s*", cmd)
+    ctx = r"(?:\s+--context[ =]\S+)?"
+    m = re.fullmatch(r"\s*kubectl" + ctx + r"\s+delete\s+(?:ns|namespace)[ /]+([a-z0-9-]+)" + ctx + r"\s*", cmd)
     return bool(m) and m.group(1) in owned_names()
+
+INTERPRETERS = re.compile(r"\b(bash|sh|zsh|dash|ksh|python3?|perl|ruby|node|eval|source)\b")
+
+def strip_heredoc_bodies(cmd):
+    """Remove heredoc bodies that are only data (for example text written to a file with cat or tee).
+    A heredoc fed to a shell or interpreter is code, so it is kept and still checked."""
+    lines, out, i = cmd.split("\n"), [], 0
+    while i < len(lines):
+        line = lines[i]
+        out.append(line)
+        m = re.search(r"<<-?\s*['\"]?(\w+)['\"]?", line)
+        i += 1
+        if m:
+            marker = m.group(1)
+            body = []
+            while i < len(lines) and lines[i].strip() != marker:
+                body.append(lines[i]); i += 1
+            if INTERPRETERS.search(line):
+                out.extend(body)
+            if i < len(lines):
+                out.append(lines[i]); i += 1
+    return "\n".join(out)
 
 def check(tool, inp):
     if tool == "Bash":
         cmd = inp.get("command", "")
         if approved(cmd) or deletes_only_owned_namespace(cmd):
             return None
+        checked = strip_heredoc_bodies(cmd)
         for pat, why in BASH_RULES:
-            if re.search(pat, cmd):
+            if re.search(pat, checked):
                 return why
     elif tool in ("Write", "Edit"):
         text = inp.get("content", "") + "\n" + inp.get("new_string", "")
