@@ -15,7 +15,7 @@ CloudCrewAI is built as seven layers. Each layer fixes a failure that the layer 
 | 1 | Playbooks | Knowledge proven in real sessions, with cited commits | Built (26) |
 | 2 | Role skills | Slash-command interface and a chained workflow (`/crew-sprint`) | Built, v0.1 untested |
 | 3 | Tools | Deterministic scripts for checks that must not depend on the agent's judgment (secret scan, teardown sweep) | Started (tools/) |
-| 4 | Policy enforcement | Hooks that block guardrail actions mechanically (for example apply without a plan, delete without approval, spend above the ceiling) | Planned |
+| 4 | Policy enforcement | Hooks that block guardrail actions mechanically (for example apply without a plan, delete without approval, spend above the ceiling) | Built (hooks/, sample-tested; live session test pending) |
 | 5 | Project ledger | A per-project record of decisions, cost ceiling, every resource created, and every human intervention, so work can be resumed and torn down from facts | Template started (templates/resource-ledger.md) |
 | 6 | Independent verifier | A separate reviewer role, run in a fresh context, that checks high-impact work without having produced it | Planned |
 | 7 | Evaluation harness | Realistic scenarios with scoring, run against multiple AI models, producing a measured pass rate | v0 started (evals/: 8 blind paper scenarios, baseline recorded) |
@@ -41,7 +41,7 @@ The multi-agent orchestration repository remains a separate project, built after
 
 1. Tools: secret scan (done, tested on fixtures and both repositories), teardown sweep (written, run it once at the next real teardown), ledger template (done).
 2. Run `/crew-sprint` on a small free local project; log every stumble.
-3. Policy hooks for the top guardrails.
+3. Policy hooks for the top guardrails (done: hooks/; next, test in a live session).
 4. Independent verifier role.
 5. Evaluation harness at roughly 30 playbooks.
 6. Dry-run project for a fictional client, using only the library; log every human intervention.
