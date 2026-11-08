@@ -36,34 +36,23 @@ This framework grows alongside a public 90-session DevOps learning journey. Each
 28. Decommissioning and data deletion — authority, inventory, backup decision, exact-resource approval, ordered deletion
 29. Offboarding and identity cleanup — departed engineer IAM user, keys and buckets: contain first, exact-resource approval, verified deletion
 
-## Planned — More Playbooks From Upcoming Sessions
+## Planned — Playbooks Mapped to the Curriculum
 
-Further Kubernetes deployment patterns.
+Each playbook is written only after the matching session is done with real output, so it is labelled proven. Session numbers follow the master plan (v2).
 
-CI/CD pipelines — Jenkins and GitHub Actions.
+| Sessions | Topic | Planned playbook |
+|---|---|---|
+| 39-41 | Jenkins setup, pipelines, Docker integration | CI pipeline with Jenkins (including the Docker socket risk and port exposure rules) |
+| 42-44 | GitHub Actions CI and CD, OIDC to AWS | CI/CD with GitHub Actions; keyless AWS deployment |
+| 45-49 | Python automation, DeployBot project | Pipeline verification and rollback in CI/CD |
+| 50-52 | ArgoCD and GitOps for Kubernetes | Kubernetes GitOps with ArgoCD |
+| 53-55 | RDS and databases, microservices | Database operations: backups, restores, migrations |
+| 56-58 | Autoscaling, RBAC, load balancer and DNS | Workload reliability, Kubernetes RBAC and NetworkPolicy, ingress and DNS |
+| 61-67 | Terraform, multi-cloud DR | Terraform at scale; disaster recovery runbooks |
+| 68-71 | Ansible, DR runbooks | Configuration management |
+| 72-75 | Prometheus, Grafana, logging, SLOs | Full observability stack |
+| 76-80 | DevSecOps, compliance, secrets, zero trust | Security pipeline; secrets management; zero trust |
+| 81-85 | AIOps | Anomaly detection and automated remediation |
 
-Configuration management with Ansible.
+Standing rule: a playbook that touches deletion, security or production gets a guardrail check and a verifier test before it is called done.
 
-Full observability stack — Prometheus and Grafana.
-
-ArgoCD-based GitOps for Kubernetes specifically.
-
-Secrets management with HashiCorp Vault.
-
-Multi-cloud disaster recovery patterns.
-
-Zero trust network security architecture.
-
-AIOps — anomaly detection, predictive scaling, automated remediation.
-
-Database operations — backups, migrations, replication (from the AWS RDS session).
-
-Network/VPC design (from the networking and load balancer sessions).
-
-## The Future Multi-Agent Repository
-
-A separate, genuinely distinct repository is planned once this repository and the full 90-session curriculum are complete: a true multi-agent orchestration system, with multiple coordinating AI agents rather than a single agent consulting a playbook library. This requires real orchestration software, not additional documentation, and is deliberately scoped as its own project — built on top of this repository's mature, real-world-tested playbooks as its knowledge foundation, rather than started prematurely.
-
-## Framework Evolution
-
-Version 2 made the framework model-agnostic via AGENT.md, rewrote guardrails as an autonomy-first exception list, and added the decision-engine document. A later update added AGENT.md's role-based task routing table, explicitly framing the single AI as simulating each relevant team role per task — the realistic middle step toward eventual true multi-agent orchestration.
