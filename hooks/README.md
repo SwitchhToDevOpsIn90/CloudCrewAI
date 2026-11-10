@@ -5,7 +5,7 @@ A hook runs before a tool call and blocks actions that need human approval. It t
 ## What it blocks
 - Irreversible deletion: eksctl/EKS deletes, terraform destroy, kubectl delete of namespaces/PVCs/PVs/StatefulSets, EBS volume/snapshot deletion, RDS/S3/IAM deletes, helm uninstall, `rm -rf`
 - History rewrite: force push, filter-repo/filter-branch
-- Security exposure: any `0.0.0.0/0` rule, IAM permission changes
+- Security exposure: any `0.0.0.0/0` rule, IAM permission changes, mounting the Docker socket, `--privileged` containers, and publishing port 8080 on all interfaces (bind `127.0.0.1`)
 - Production changes: helm upgrade/rollback and kubectl changes aimed at prod
 - Secrets in files: access key IDs, secret keys, private keys, real account IDs in ARNs (Write/Edit)
 
@@ -19,7 +19,7 @@ A namespace the agent created itself and recorded in the resource ledger can be 
 Copy `hooks/settings.example.json` into `.claude/settings.json` of the project the agent works in, with the path to this repo's `hooks/crew_policy.py`.
 
 ## Test
-`bash hooks/test_policy.sh` (29 cases).
+`bash hooks/test_policy.sh` (33 cases).
 
 ## Known limits
 - Pattern matching, not understanding: a command built indirectly (script file, variable, `bash -c`) can slip past. It is a safety net, not a replacement for the guardrails or the independent verifier (layer 6).
