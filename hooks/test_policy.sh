@@ -24,6 +24,10 @@ t world-open 2 "$(b 'aws ec2 authorize-security-group-ingress --group-id sg-1 --
 t helm-prod 2 "$(b 'helm upgrade myapp ./chart -n production')"
 t akia-in-file 2 "$(w 'key=AKI''AABCDEFGHIJKLMNOP')"
 t arn-account 2 "$(w 'arn:aws:iam::1234''56789012:user/x')"
+t docker-sock 2 "$(b 'docker run -d -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins:2.580.2-lts-jdk21')"
+t docker-privileged 2 "$(b 'docker run -d --privileged docker:dind')"
+t port-8080-open 2 "$(b 'docker run -d -p 8080:8080 jenkins/jenkins:2.580.2-lts-jdk21')"
+t port-8080-loopback 0 "$(b 'docker run -d -p 127.0.0.1:8080:8080 jenkins/jenkins:2.580.2-lts-jdk21')"
 # should allow (0)
 t get-pods 0 "$(b 'kubectl get pods -A')"
 t helm-list 0 "$(b 'helm list')"

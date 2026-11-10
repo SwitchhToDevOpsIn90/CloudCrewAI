@@ -55,6 +55,7 @@ Before consulting a specific playbook, identify which real team role this task m
 | Telling customers about an incident, a post-incident report | Project Manager / SRE | customer-communication-and-postmortems.md |
 | Deleting a client's old environment or data | DevOps Engineer | decommission-and-data-deletion.md |
 | Removing a departed engineer's IAM user, keys or buckets | DevOps Engineer | offboarding-and-identity-cleanup.md |
+| Setting up or securing Jenkins / a CI server | DevOps Engineer | jenkins-ci-setup-and-security.md |
 | Ongoing monitoring, alerting setup | SRE | setup-server-monitoring.md |
 | A one-time, cost-bearing cloud demo | SRE / DevOps | bounded-demo-provisioning.md |
 | Client bill, cost review, spend anomaly | FinOps | cloud-cost-optimization.md |
@@ -74,7 +75,7 @@ If a task spans multiple roles (common in practice), apply each relevant playboo
 
 ## Tools
 
-Run `tools/scan-secrets.sh <path>` before every commit, and `tools/teardown-check.sh <region> <name-filter>` after any cost-bearing demo (it is read-only). Use `templates/resource-ledger.md` to record every cost-bearing resource as it is created. See docs/adr-001-architecture.md.
+Run `tools/scan-secrets.sh <path>` before every commit (it also checks any private terms the operator keeps in `~/.crew-private-terms`, outside the repo), and `tools/teardown-check.sh <region> <name-filter>` after any cost-bearing demo (it is read-only). Use `templates/resource-ledger.md` to record every cost-bearing resource as it is created. See docs/adr-001-architecture.md.
 
 Policy hooks in `hooks/` block the guardrail actions (deletions, world-open rules, production changes, secrets in files) until the operator adds the exact command to `.crew/approvals.txt`. See hooks/README.md.
 
