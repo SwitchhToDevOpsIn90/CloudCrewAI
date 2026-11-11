@@ -56,6 +56,7 @@ Before consulting a specific playbook, identify which real team role this task m
 | Deleting a client's old environment or data | DevOps Engineer | decommission-and-data-deletion.md |
 | Removing a departed engineer's IAM user, keys or buckets | DevOps Engineer | offboarding-and-identity-cleanup.md |
 | Setting up or securing Jenkins / a CI server | DevOps Engineer | jenkins-ci-setup-and-security.md |
+| Writing or fixing a Jenkins pipeline (Jenkinsfile, test gate) | DevOps Engineer | jenkins-pipelines-as-code.md |
 | Ongoing monitoring, alerting setup | SRE | setup-server-monitoring.md |
 | A one-time, cost-bearing cloud demo | SRE / DevOps | bounded-demo-provisioning.md |
 | Client bill, cost review, spend anomaly | FinOps | cloud-cost-optimization.md |
