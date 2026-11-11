@@ -8,7 +8,7 @@ CloudCrewAI is a model-agnostic library that lets a single AI agent act as archi
 
 AI agents are fast and confident, and confidence is the problem in cloud work: a wrong delete, a forgotten volume or an over-sure client email is expensive. This repo is built around catching that:
 
-- **Playbooks** (30) written from real work, each with a Guardrail Check and a Reference Implementation.
+- **Playbooks** (31) written from real work, each with a Guardrail Check and a Reference Implementation.
 - **Guardrails**: deletion, security exposure, cost above a ceiling, production changes and client communication always need a named human approval.
 - **Policy hooks**: the guardrails enforced mechanically, so a blocked command stays blocked even if the agent forgets.
 - **Independent verifier**: a separate agent re-reads the real state and defaults to doubt. The agent that did the work never grades it.
@@ -45,12 +45,12 @@ request -> AGENT.md routing -> playbook -> guardrail check -> work (hooks block 
 
 The seven layers (playbooks, role skills, tools, policy hooks, project ledger, independent verifier, evaluation harness) and their status are in `docs/adr-001-architecture.md`.
 
-## The 30 playbooks
+## The 31 playbooks
 
 **Client & Project Management:** Client onboarding, Ongoing project coordination
 **Architecture:** Architecture decision records, Existing environment discovery
 **Development:** Docker containerization, Docker Compose orchestration, Container registry deployment
-**Infrastructure & DevOps:** Terraform, GitOps auto-sync, Package pinning, Kubernetes core & networking, EKS cluster setup & teardown, Kubernetes persistent storage, Helm packaging & releases, Jenkins CI setup & security
+**Infrastructure & DevOps:** Terraform, GitOps auto-sync, Package pinning, Kubernetes core & networking, EKS cluster setup & teardown, Kubernetes persistent storage, Helm packaging & releases, Jenkins CI setup & security, Jenkins pipelines as code
 **Security:** Server hardening, Secrets incident response
 **Testing & QA:** Testing and QA
 **Release & Operations:** Git branch protection, Release management & rollback, Bounded demo provisioning
