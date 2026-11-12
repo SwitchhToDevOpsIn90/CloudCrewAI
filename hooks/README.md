@@ -15,6 +15,9 @@ The human operator adds the EXACT command, one per line, to `.crew/approvals.txt
 ## Own demo namespaces
 A namespace the agent created itself and recorded in the resource ledger can be listed (one per line) in `.crew/owned.txt`. Deleting exactly that namespace is then allowed without approval, matching the guardrail exemption for disposable demo resources. Any other namespace, or several at once, is still blocked. This was added after the first `/crew-sprint` test, where the agent shared the `default` namespace to avoid the approval pause.
 
+## Isolated Docker engines
+A Docker-in-Docker engine for CI needs `--privileged`, which the hook blocks. That is intended: the operator approves the exact `docker run` command by adding it to `.crew/approvals.txt`, and the approval is the record that the privileged container was a deliberate choice (see playbooks/jenkins-docker-build-and-ecr-push.md).
+
 ## Install (Claude Code)
 Copy `hooks/settings.example.json` into `.claude/settings.json` of the project the agent works in, with the path to this repo's `hooks/crew_policy.py`.
 
