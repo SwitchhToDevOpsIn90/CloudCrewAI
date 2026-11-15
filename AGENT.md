@@ -58,6 +58,7 @@ Before consulting a specific playbook, identify which real team role this task m
 | Setting up or securing Jenkins / a CI server | DevOps Engineer | jenkins-ci-setup-and-security.md |
 | Writing or fixing a Jenkins pipeline (Jenkinsfile, test gate) | DevOps Engineer | jenkins-pipelines-as-code.md |
 | Building Docker images in Jenkins / pushing to ECR | DevOps Engineer | jenkins-docker-build-and-ecr-push.md |
+| GitHub Actions CI, required checks, branch protection | DevOps Engineer | github-actions-ci-and-required-checks.md |
 | Ongoing monitoring, alerting setup | SRE | setup-server-monitoring.md |
 | A one-time, cost-bearing cloud demo | SRE / DevOps | bounded-demo-provisioning.md |
 | Client bill, cost review, spend anomaly | FinOps | cloud-cost-optimization.md |
