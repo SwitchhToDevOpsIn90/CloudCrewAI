@@ -15,11 +15,10 @@ Status: secondary sources only (blog posts and news write-ups read on 2026-11-17
 | Least privilege and platform-level gates | Policy hook, scoped-credential playbooks, OIDC deploy playbook | Built, tested on samples |
 | GitHub Actions rules are missing elsewhere | `tools/check-workflows.py` (rules from sessions 42 to 44), run in this repo's CI | Built, 13 fixture tests |
 | Skills read like personas | Playbooks cite commits; `tools/check-repo.sh` fails the build if a playbook lacks a Guardrail Check or Reference Implementation | Built |
-| Kubernetes and Terraform plan review is thin | Not built yet: a plan reviewer that flags deletion or replacement of stateful resources from `terraform show -json` output | Planned |
+| Kubernetes and Terraform plan review is thin | `tools/review-terraform-plan.py` (stateful delete or replace, world-open rules, admin-style IAM) and `tools/check-k8s-manifest.py` (latest tags, privileged, root, hostPath, literal secrets, limits, probes) | Built, 15 and 17 fixture tests; not yet used on real client work |
 
 ## Next candidates
 
-1. Terraform plan reviewer (read-only, tested on fixture JSON).
-2. Kubernetes manifest checker (non-root, limits, probes, digest pins) from the Session 44 manifest.
-3. Harder blind verifier tests (cross-file contradictions, missing evidence, fake-looking output).
-4. Enforce the restore-point rule in the hook for history rewrites and database drops.
+1. Verifier false-alarm test: a mostly-true report scored for wrongly failed claims.
+2. Run the Terraform and Kubernetes tools on a real plan and manifest in the next live session and fix what breaks.
+3. Enforce the restore-point rule in the hook for history rewrites and database drops.
