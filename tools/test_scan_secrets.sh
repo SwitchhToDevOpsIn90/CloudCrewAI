@@ -7,4 +7,7 @@ echo "some-private-name" > "$D/terms"
 CREW_PRIVATE_TERMS="$D/terms" bash tools/scan-secrets.sh "$D/clean.md" >/dev/null 2>&1; [ $? = 0 ] && pass=$((pass+1)) || { fail=$((fail+1)); echo "FAIL: clean file flagged"; }
 CREW_PRIVATE_TERMS="$D/terms" bash tools/scan-secrets.sh "$D/leak.md" >/dev/null 2>&1; [ $? = 1 ] && pass=$((pass+1)) || { fail=$((fail+1)); echo "FAIL: private term (any case) not caught"; }
 CREW_PRIVATE_TERMS="$D/missing" bash tools/scan-secrets.sh "$D/leak.md" >/dev/null 2>&1; [ $? = 0 ] && pass=$((pass+1)) || { fail=$((fail+1)); echo "FAIL: missing terms file should not fail"; }
+ID="1234""56789012"; echo "arn:aws:iam::$ID:role/x" > "$D/arn.md"; echo "    --hash=sha256:ab${ID}cd" > "$D/hash.md"
+bash tools/scan-secrets.sh "$D/arn.md" >/dev/null 2>&1; [ $? = 1 ] && pass=$((pass+1)) || { fail=$((fail+1)); echo "FAIL: account id in ARN not caught"; }
+bash tools/scan-secrets.sh "$D/hash.md" >/dev/null 2>&1; [ $? = 0 ] && pass=$((pass+1)) || { fail=$((fail+1)); echo "FAIL: hash digits flagged"; }
 echo "passed=$pass failed=$fail"; rm -rf "$D"; [ "$fail" = 0 ]
