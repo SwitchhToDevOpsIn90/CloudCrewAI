@@ -1,5 +1,7 @@
 # Resource Ledger — <project name>
 
+This file shows the format. Keep the real ledger with `tools/ledger.py` (default file `.crew/ledger.md`): `init`, `add`, `note`, `close`/`keep`, `check`. The tool refuses secrets and masks 12-digit numbers.
+
 Record every cost-bearing resource at the moment it is created, so teardown is a checklist, not a memory exercise. Never record secrets or account IDs.
 
 Cost ceiling: <amount>   Region: <region>   Owner: <accountable person>

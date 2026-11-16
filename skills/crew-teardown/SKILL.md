@@ -22,6 +22,7 @@ Read the matching playbook in full before acting. The playbook is the source of 
 2. Verify every resource type independently (clusters, stacks, VPCs, instances, volumes, snapshots, roles).
 3. Check the console pages the CLI does not cover (for example Snapshots).
 4. Revoke any temporary permissions last.
+5. Close every ledger row with `tools/ledger.py close <row> "<evidence>"` (or `keep <row> "<reason>"` for anything intentionally left), then run `tools/ledger.py check`; it must print LEDGER CLEAR before the project is called finished.
 
 ## Output (hand-off)
 

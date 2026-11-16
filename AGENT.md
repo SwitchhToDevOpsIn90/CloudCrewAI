@@ -80,7 +80,7 @@ If a task spans multiple roles (common in practice), apply each relevant playboo
 
 ## Tools
 
-Run `tools/scan-secrets.sh <path>` before every commit (it also checks any private terms the operator keeps in `~/.crew-private-terms`, outside the repo), and `tools/teardown-check.sh <region> <name-filter>` after any cost-bearing demo (it is read-only). Use `templates/resource-ledger.md` to record every cost-bearing resource as it is created. See docs/adr-001-architecture.md.
+Run `tools/scan-secrets.sh <path>` before every commit (it also checks any private terms the operator keeps in `~/.crew-private-terms`, outside the repo), and `tools/teardown-check.sh <region> <name-filter>` after any cost-bearing demo (it is read-only). Keep the project ledger with `tools/ledger.py` (`init`, then `add` every cost-bearing resource at the moment it is created, `note` decisions, approvals and human interventions, `close` or `keep` each row with evidence, and run `check` before calling a project finished). `templates/resource-ledger.md` shows the format. See docs/adr-001-architecture.md.
 
 Policy hooks in `hooks/` block the guardrail actions (deletions, world-open rules, production changes, secrets in files) until the operator adds the exact command to `.crew/approvals.txt`. See hooks/README.md.
 

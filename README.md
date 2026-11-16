@@ -20,6 +20,7 @@ AI agents are fast and confident, and confidence is the problem in cloud work: a
 |---|---|---|
 | Blind routing: fresh agents given only `AGENT.md` and 10 realistic requests (exposed key, prod 500s, deleting a cluster, unknown AWS account, Helm upgrade, client email...) | **10/10** on the latest run; 8/8 on the first | `evals/results/` |
 | Policy hook against sample tool calls | **33/33** | `hooks/test_policy.sh` |
+| Project ledger tool (record, close with evidence, refuse secrets, mask account IDs, fail while any row is open) | **18/18** on temporary files; not yet used in a live session | `tools/test_ledger.sh` |
 | Independent verifier, planted errors (stale evidence, wrong region, unapproved deletion, lagging cost data) | **5/5 and 5/5** | `evals/results/` |
 | Two live `/crew-sprint` runs on local Minikube at $0 | Both completed with teardown proof; both exposed real flaws that were then fixed | `evals/results/` |
 
@@ -66,12 +67,12 @@ The seven layers (playbooks, role skills, tools, policy hooks, project ledger, i
 - `hooks/`: policy enforcement (layer 4) with tests.
 - `docs/`: vision, ADR (architecture), decision engine, reliability protocol, independent verifier, roadmap.
 - `evals/`: test scenarios, fixtures and every recorded result.
-- `tools/`: secret scan and read-only teardown sweep. `templates/`: resource ledger, verification request and report.
+- `tools/`: secret scan, read-only teardown sweep and project ledger. `templates/`: resource ledger format, verification request and report.
 - `skills/`: optional Claude Code slash commands.
 
 ## Status and roadmap
 
-Built: layers 1 to 4, 6 and 7 (v0). In progress: the project ledger (layer 5), harder verifier tests (cross-file contradictions, missing evidence), live use on non-demo accounts. A separate multi-agent orchestration repo is planned after the playbook library matures; this repo is deliberately a single-agent library. See `docs/roadmap.md`.
+Built: layers 1 to 7 (the ledger, layer 5, is v0 and untested in a live session; layer 7 is v0). In progress: harder verifier tests (cross-file contradictions, missing evidence), live use on non-demo accounts. A separate multi-agent orchestration repo is planned after the playbook library matures; this repo is deliberately a single-agent library. See `docs/roadmap.md`.
 
 ## License
 

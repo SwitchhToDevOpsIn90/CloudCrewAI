@@ -28,7 +28,7 @@ Read the matching playbook in full before acting. The playbook is the source of 
 2. Rehearse first where possible: local cluster, `--dry-run`, `terraform plan`, `helm template`.
 3. Stay inside the cost ceiling; use a bounded-demo pattern for anything temporary.
 4. Plan the teardown before creating cost-bearing resources.
-5. Use a dedicated namespace or resource group for anything you create, never one that holds other workloads. Record it in the resource ledger and list it in `.crew/owned.txt` so the policy hook lets you delete exactly that namespace at teardown.
+5. Use a dedicated namespace or resource group for anything you create, never one that holds other workloads. Record every cost-bearing resource with `tools/ledger.py add` at the moment it is created (and decisions or approvals with `note`), and list the namespace in `.crew/owned.txt` so the policy hook lets you delete exactly that namespace at teardown.
 
 ## Output (hand-off)
 
