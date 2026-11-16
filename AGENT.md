@@ -60,6 +60,7 @@ Before consulting a specific playbook, identify which real team role this task m
 | Building Docker images in Jenkins / pushing to ECR | DevOps Engineer | jenkins-docker-build-and-ecr-push.md |
 | GitHub Actions CI, required checks, branch protection | DevOps Engineer | github-actions-ci-and-required-checks.md |
 | Full CI pipeline: matrix, image build, scan, single gate, Dependabot | DevOps Engineer | github-actions-secure-ci-pipeline.md |
+| Deploy from GitHub Actions to AWS/EKS with OIDC, no stored keys | DevOps Engineer | github-actions-oidc-deploy-to-eks.md |
 | Ongoing monitoring, alerting setup | SRE | setup-server-monitoring.md |
 | A one-time, cost-bearing cloud demo | SRE / DevOps | bounded-demo-provisioning.md |
 | Client bill, cost review, spend anomaly | FinOps | cloud-cost-optimization.md |

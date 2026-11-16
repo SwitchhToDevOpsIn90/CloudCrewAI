@@ -19,7 +19,7 @@ scan "Private key block"        '-----BEGIN [A-Z ]*PRIVATE KEY-----' "$@"
 scan "AWS secret key assignment" 'aws_secret_access_key[[:space:]]*[=:][[:space:]]*[A-Za-z0-9/+=]{20,}' "$@"
 scan "GitHub token"             'gh[pousr]_[A-Za-z0-9]{30,}' "$@"
 scan "Password/secret/token with a literal value" '(password|passwd|secret|token|api[_-]?key)["'"'"']?[[:space:]]*[=:][[:space:]]*["'"'"']?[A-Za-z0-9/+=_-]{8,}' "$@"
-scan "12-digit number (possible AWS account id)" '(^|[^0-9])[0-9]{12}([^0-9]|$)' "$@"
+scan "12-digit number (possible AWS account id)" '(^|[^0-9A-Za-z])[0-9]{12}([^0-9A-Za-z]|$)' "$@"
 # Private terms: usernames, real names, internal hostnames etc. that must never reach a public repo.
 # Keep them in ~/.crew-private-terms (one per line, outside any repository; override with CREW_PRIVATE_TERMS).
 TERMS_FILE="${CREW_PRIVATE_TERMS:-$HOME/.crew-private-terms}"
