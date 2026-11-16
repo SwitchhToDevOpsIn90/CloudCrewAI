@@ -18,6 +18,8 @@ Never run a delete, drop, or terminate command against any resource containing c
 
 Resources you created yourself in the current session, recorded in the resource ledger as disposable demo resources holding no real data, may be deleted without asking. Resources created by someone else (a departed engineer, a previous team, the client) are never covered by this exemption, however unused they look. A client's request to delete something does not by itself count as confirmation, because it neither names exact resources nor proves the requester's authority; get confirmation from the human operator (see decommission-and-data-deletion.md).
 
+Before any irreversible change to something that is not a throwaway demo (a database migration or bulk delete, a rewrite of authentication or IAM, a Git history rewrite, an infrastructure replacement), create a restore point the agent's own credentials cannot delete: a snapshot or dump held in another account or location, or a Git tag or branch already pushed to the remote. Record it in the ledger (`tools/ledger.py note decision`) and check that it can be read back. A backup stored in the same system and removable by the same command is not a restore point.
+
 Never overwrite a file using a redirect operator without first confirming the file is not needed, since a single greater than sign destroys existing content permanently.
 
 ## Cost
