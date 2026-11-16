@@ -20,6 +20,11 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Install PyYAML (used by the Kubernetes manifest checker)
+        run: pip install pyyaml==6.0.3
       - name: Repository consistency
         run: bash tools/check-repo.sh
       - name: Secret scan (no private-terms file in CI; run the scan locally too)
@@ -35,6 +40,8 @@ jobs:
           bash tools/test_ledger.sh
           bash tools/test_check_workflows.sh
           bash tools/test_check_repo.sh
+          bash tools/test_review_terraform_plan.sh
+          bash tools/test_check_k8s_manifest.sh
 
   ci-ok:
     if: always()
