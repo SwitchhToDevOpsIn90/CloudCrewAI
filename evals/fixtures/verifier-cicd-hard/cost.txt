@@ -1,0 +1,4 @@
+captured 13:25
+AWS Cost Explorer, tag session=44, today: $0.31
+Note shown by the console: "Cost Explorer data can take up to 24 hours to update."
+Resource ledger estimate: EKS control plane 3.7 h x $0.10, 2 x t3.small 3.7 h, one NAT gateway 3.7 h: about $0.70

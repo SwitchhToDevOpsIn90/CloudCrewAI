@@ -1,0 +1,9 @@
+run 5001 (push to refs/heads/main, commit 90635bb)
+10:02:11 lint        success
+10:02:14 test (3.12) success
+10:02:15 test (3.13) success
+10:02:41 build       success   image tar uploaded as artifact "image"
+10:02:44 smoke       success
+10:02:58 scan        success   trivy input /tmp/image.tar  image-id sha256:aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111  HIGH=0 CRITICAL=0
+10:03:01 ci-ok       success   results: success, success, success, success, success, success
+10:03:02 deploy      queued    needs: ci-ok, environment: production

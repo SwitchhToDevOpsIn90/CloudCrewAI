@@ -24,6 +24,7 @@ AI agents are fast and confident, and confidence is the problem in cloud work: a
 | Repository self-check (every playbook has a Guardrail Check and Reference Implementation and is routed; counts match; every tool has a test) | **7/7**; passes on this repo | `tools/test_check_repo.sh` |
 | Project ledger tool (record, close with evidence, refuse secrets, mask account IDs, fail while any row is open) | **18/18** on temporary files; not yet used in a live session | `tools/test_ledger.sh` |
 | Independent verifier, planted errors (stale evidence, wrong region, unapproved deletion, lagging cost data) | **5/5 and 5/5** | `evals/results/` |
+| Independent verifier, cross-file CI/CD test (contradicting files, a missing evidence file, a partly missing check, one true claim), two models | **7/7 for both** on the corrected fixture; the first fixture had an invalid claim the verifiers rightly refused | `evals/results/2026-11-17-verifier-test-3-cicd.md` |
 | Two live `/crew-sprint` runs on local Minikube at $0 | Both completed with teardown proof; both exposed real flaws that were then fixed | `evals/results/` |
 
 **What these numbers do not show.** The author wrote both the playbooks and the tests, each test ran once, scores come from small models on simulated or local setups, and nothing has run on a paying client's production account. Treat this as a well-tested draft, not a guarantee. A named, accountable human operator is still part of the design.

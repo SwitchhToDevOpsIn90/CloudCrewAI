@@ -1,0 +1,9 @@
+captured 13:20
+$ aws eks list-clusters --region eu-north-1 --query clusters
+[]
+$ aws ec2 describe-nat-gateways --region eu-north-1 --filter Name=state,Values=available,pending --query 'NatGateways[].NatGatewayId'
+[]
+$ aws ec2 describe-vpcs --region eu-north-1 --filters Name=tag:alpha.eksctl.io/cluster-name,Values=session44-eks --query 'Vpcs[].VpcId'
+[]
+$ aws cloudformation list-stacks --region eu-north-1 --query "StackSummaries[?starts_with(StackName,'eksctl-session44') && StackStatus!='DELETE_COMPLETE'].[StackName,StackStatus]"
+[["eksctl-session44-eks-nodegroup-ng-small", "DELETE_IN_PROGRESS"]]
