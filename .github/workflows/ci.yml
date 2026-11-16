@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - name: Repository consistency
+        run: bash tools/check-repo.sh
+      - name: Secret scan (no private-terms file in CI; run the scan locally too)
+        run: bash tools/scan-secrets.sh .
+      - name: Workflow audit
+        run: python3 tools/check-workflows.py .github/workflows
+      - name: Tool tests
+        run: |
+          set -e
+          bash hooks/test_policy.sh
+          bash tools/test_scan_secrets.sh
+          bash tools/test_teardown_check.sh
+          bash tools/test_ledger.sh
+          bash tools/test_check_workflows.sh
+          bash tools/test_check_repo.sh
+
+  ci-ok:
+    if: always()
+    needs: [checks]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: All required jobs passed
+        run: |
+          echo "results: ${{ join(needs.*.result, ', ') }}"
+          if ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'skipped') }}; then
+            echo "A required job did not succeed"; exit 1
+          fi

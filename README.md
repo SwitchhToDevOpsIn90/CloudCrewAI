@@ -20,6 +20,8 @@ AI agents are fast and confident, and confidence is the problem in cloud work: a
 |---|---|---|
 | Blind routing: fresh agents given only `AGENT.md` and 10 realistic requests (exposed key, prod 500s, deleting a cluster, unknown AWS account, Helm upgrade, client email...) | **10/10** on the latest run; 8/8 on the first | `evals/results/` |
 | Policy hook against sample tool calls | **33/33** | `hooks/test_policy.sh` |
+| GitHub Actions workflow auditor (unpinned actions, `pull_request_target`, script injection, printed secrets, `write-all`); also run on the real Session 43 pipeline file: 0 flags | **13/13** on fixtures | `tools/test_check_workflows.sh` |
+| Repository self-check (every playbook has a Guardrail Check and Reference Implementation and is routed; counts match; every tool has a test) | **7/7**; passes on this repo | `tools/test_check_repo.sh` |
 | Project ledger tool (record, close with evidence, refuse secrets, mask account IDs, fail while any row is open) | **18/18** on temporary files; not yet used in a live session | `tools/test_ledger.sh` |
 | Independent verifier, planted errors (stale evidence, wrong region, unapproved deletion, lagging cost data) | **5/5 and 5/5** | `evals/results/` |
 | Two live `/crew-sprint` runs on local Minikube at $0 | Both completed with teardown proof; both exposed real flaws that were then fixed | `evals/results/` |
@@ -67,7 +69,7 @@ The seven layers (playbooks, role skills, tools, policy hooks, project ledger, i
 - `hooks/`: policy enforcement (layer 4) with tests.
 - `docs/`: vision, ADR (architecture), decision engine, reliability protocol, independent verifier, roadmap.
 - `evals/`: test scenarios, fixtures and every recorded result.
-- `tools/`: secret scan, read-only teardown sweep and project ledger. `templates/`: resource ledger format, verification request and report.
+- `tools/`: secret scan, read-only teardown sweep, project ledger, GitHub Actions workflow auditor and repository self-check. `.github/workflows/ci.yml` runs all tests on every pull request. `templates/`: resource ledger format, verification request and report.
 - `skills/`: optional Claude Code slash commands.
 
 ## Status and roadmap
