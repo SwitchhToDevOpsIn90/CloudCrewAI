@@ -1,0 +1,12 @@
+run 5001 job deploy (event push, ref refs/heads/main)
+10:09:40 job started
+10:09:41 Who am I: arn:aws:sts::***:assumed-role/gha-devops-journey-deploy/gha-deploy-5001
+10:09:58 docker load -i /tmp/image.tar   Loaded image ID: sha256:bbbb2222bbbb2222bbbb2222bbbb2222bbbb2222bbbb2222bbbb2222bbbb2222
+10:10:07 Pushed: ***.dkr.ecr.eu-north-1.amazonaws.com/flask-docker-app@sha256:cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333
+10:10:21 kubectl apply -f /tmp/app.yaml   deployment.apps/dockerapp configured
+10:10:44 deployment "dockerapp" successfully rolled out
+10:10:50 Flask running
+10:10:52 + test "$(kubectl auth can-i create deployments -n dockerapp)" = "yes"
+10:10:53 + test "$(kubectl auth can-i create deployments -n kube-system)" = "no"
+10:10:54 + test "$(kubectl auth can-i create namespaces)" = "no"
+10:10:55 job succeeded
