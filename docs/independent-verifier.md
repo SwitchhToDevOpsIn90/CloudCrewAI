@@ -34,4 +34,4 @@ Does not receive: the producer's reasoning, its confidence, or its own "verified
 
 ## How it was tested
 
-See evals/results/2026-11-07-verifier-test.md (fixture in evals/fixtures/verifier-teardown/) and 2026-11-07-verifier-test-2-hard.md (fixture in evals/fixtures/verifier-teardown-hard/) and 2026-11-17-verifier-test-3-cicd.md (fixture in evals/fixtures/verifier-cicd-hard/, answer key in evals/answer-keys/) for the planted-error tests: a report with deliberately false and over-confident claims was given to a fresh agent, and the verdicts were compared against the known answers.
+See evals/results/2026-11-07-verifier-test.md (fixture in evals/fixtures/verifier-teardown/) and 2026-11-07-verifier-test-2-hard.md (fixture in evals/fixtures/verifier-teardown-hard/) and 2026-11-17-verifier-test-3-cicd.md and 2026-11-17-verifier-test-4-false-alarm.md (a mostly-true report, to measure false alarms) (fixture in evals/fixtures/verifier-cicd-hard/, answer key in evals/answer-keys/) for the planted-error tests: a report with deliberately false and over-confident claims was given to a fresh agent, and the verdicts were compared against the known answers.
