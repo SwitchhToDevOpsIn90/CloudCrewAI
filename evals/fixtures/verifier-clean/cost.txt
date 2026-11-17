@@ -1,0 +1,4 @@
+stack deletion finished the previous day at 13:52
+captured next day 15:30 (about 25.5 hours after teardown finished)
+AWS Cost Explorer, tag session=44, whole period: $0.64
+Resource ledger estimate was about $0.70

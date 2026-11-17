@@ -1,0 +1,5 @@
+$ gh api repos/SwitchhToDevOpsIn90/devops-journey/branches/main/protection --jq '{checks: [.required_status_checks.checks[].context], enforce_admins: .enforce_admins.enabled, pr_required: (.required_pull_request_reviews != null)}'
+{"checks":["ci-ok"],"enforce_admins":true,"pr_required":true}
+$ gh pr merge 99 --admin    (pull request 99 had a deliberately failing test; ci-ok showed failure)
+X Pull request #99 is not mergeable: the base branch policy prohibits the merge.
+Required status check "ci-ok" is failing.

@@ -1,0 +1,14 @@
+captured 14:05 (stack deletion finished at 13:52: "STACK GONE")
+$ aws eks list-clusters --region eu-north-1 --query clusters
+[]
+$ aws ec2 describe-nat-gateways --region eu-north-1 --filter Name=state,Values=available,pending --query 'NatGateways[].NatGatewayId'
+[]
+$ aws ec2 describe-vpcs --region eu-north-1 --filters Name=tag:alpha.eksctl.io/cluster-name,Values=session44-eks --query 'Vpcs[].VpcId'
+[]
+$ aws cloudformation list-stacks --region eu-north-1 --query "StackSummaries[?starts_with(StackName,'eksctl-session44') && StackStatus!='DELETE_COMPLETE'].[StackName,StackStatus]"
+[]
+$ aws ecr describe-repositories --region eu-north-1 --query 'repositories[].repositoryName'
+[]
+$ AWS_PROFILE=admin-badge aws iam get-role --role-name session44-eks-admin
+An error occurred (NoSuchEntity) when calling the GetRole operation: The role with name session44-eks-admin cannot be found.
+(the admin profile in use had full IAM read access; the error is NoSuchEntity, not AccessDenied)

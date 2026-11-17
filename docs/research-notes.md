@@ -19,6 +19,6 @@ Status: secondary sources only (blog posts and news write-ups read on 2026-11-17
 
 ## Next candidates
 
-1. Verifier false-alarm test: a mostly-true report scored for wrongly failed claims.
+1. Verifier test with truncated or pasted-screenshot evidence and a producer who pre-fills the verification columns.
 2. Run the Terraform and Kubernetes tools on a real plan and manifest in the next live session and fix what breaks.
 3. Enforce the restore-point rule in the hook for history rewrites and database drops.

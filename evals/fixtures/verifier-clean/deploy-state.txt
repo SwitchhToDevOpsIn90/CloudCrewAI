@@ -1,0 +1,6 @@
+$ aws ecr describe-images --repository-name flask-docker-app --image-ids imageTag=90635bb --query 'imageDetails[0].imageDigest'
+"sha256:cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333"
+$ kubectl -n dockerapp get deploy dockerapp -o jsonpath='{.spec.template.spec.containers[0].image}'
+<ACCOUNT_ID>.dkr.ecr.eu-north-1.amazonaws.com/flask-docker-app@sha256:cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333
+$ kubectl -n dockerapp get pods -o jsonpath='{.items[*].status.containerStatuses[0].imageID}'
+<ACCOUNT_ID>.dkr.ecr.eu-north-1.amazonaws.com/flask-docker-app@sha256:cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333 <ACCOUNT_ID>.dkr.ecr.eu-north-1.amazonaws.com/flask-docker-app@sha256:cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333cccc3333
