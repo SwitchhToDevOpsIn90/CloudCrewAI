@@ -61,6 +61,7 @@ Before consulting a specific playbook, identify which real team role this task m
 | GitHub Actions CI, required checks, branch protection | DevOps Engineer | github-actions-ci-and-required-checks.md |
 | Full CI pipeline: matrix, image build, scan, single gate, Dependabot | DevOps Engineer | github-actions-secure-ci-pipeline.md |
 | Deploy from GitHub Actions to AWS/EKS with OIDC, no stored keys | DevOps Engineer | github-actions-oidc-deploy-to-eks.md |
+| Two CI tools (Jenkins + GitHub Actions) sharing one digest and one deploy path; temporary credentials and their cleanup | DevOps Engineer | jenkins-and-github-actions-one-digest-pipeline.md |
 | Ongoing monitoring, alerting setup | SRE | setup-server-monitoring.md |
 | A one-time, cost-bearing cloud demo | SRE / DevOps | bounded-demo-provisioning.md |
 | Client bill, cost review, spend anomaly | FinOps | cloud-cost-optimization.md |
