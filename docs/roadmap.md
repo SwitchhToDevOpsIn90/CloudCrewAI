@@ -4,7 +4,7 @@ The long-term goal and milestones are in docs/vision.md.
 
 This framework grows alongside a public 90-session DevOps learning journey. Each playbook is added once the underlying skill is learned and genuinely proven — not every session produces a new playbook, only those with a genuinely new, reusable pattern. A small number of foundational team-operating playbooks (client onboarding, testing/QA, documentation, release management, production incident response, project coordination, environment discovery) were added directly, representing standard practice for a complete team rather than requiring a specific triggering session.
 
-## Complete — 35 Playbooks
+## Complete — 36 Playbooks
 
 1. Client onboarding — starting a real engagement
 2. Project coordination — ongoing status, scope-change handling
@@ -41,6 +41,7 @@ This framework grows alongside a public 90-session DevOps learning journey. Each
 33. GitHub Actions CI and required checks — SHA-pinned actions, least-privilege workflow, required check enforced on administrators, path-filter trap
 34. GitHub Actions secure CI pipeline — parallel jobs and matrix, image built once and scanned, one always-reporting gate, hash-locked dependencies, tag-plus-digest base pin, Dependabot
 35. GitHub Actions OIDC deploy to EKS — no stored keys, trust policy pinned to repo and environment, approval gate, deploy by digest, namespace-boxed identity, teardown sweep
+36. Jenkins and GitHub Actions on one digest — build in one tool and deploy in another with only the digest handed over, one shared deploy action, a deployer that distrusts its caller, scoped temporary credentials with an expiry in the trust policy, a scheduled production scanner, and credential cleanup checked by kind
 
 ## Planned — Playbooks Mapped to the Curriculum
 
@@ -50,6 +51,7 @@ Each playbook is written only after the matching session is done with real outpu
 |---|---|---|
 | 39-41 | Jenkins setup, pipelines, Docker integration | Setup and security (Session 39), pipelines as code (Session 40) and Docker builds with ECR push (Session 41) done |
 | 42-44 | GitHub Actions CI and CD, OIDC to AWS | CI with required checks (Session 42), the full pipeline (Session 43) and keyless OIDC deployment to EKS (Session 44) done |
+| 45 | Full CI/CD integration (Jenkins, GitHub Actions, GitLab compared) | Jenkins and GitHub Actions on one digest done |
 | 45-49 | Python automation, DeployBot project | Pipeline verification and rollback in CI/CD |
 | 50-52 | ArgoCD and GitOps for Kubernetes | Kubernetes GitOps with ArgoCD |
 | 53-55 | RDS and databases, microservices | Database operations: backups, restores, migrations |
